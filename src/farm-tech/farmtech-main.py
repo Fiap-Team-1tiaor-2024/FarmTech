@@ -16,7 +16,7 @@ def area_retangulo(base, altura):
 def area_triangulo(base, altura):
   return (base * altura) / 2
 
-def area_insumos(area, quantidade):
+def calcular_insumos(area, quantidade):
   return area * quantidade
 
 # Métodos para opções
@@ -40,7 +40,7 @@ def calcular_area():
   elif formaGeometrica == 3:
     area = area_triangulo(largura, comprimento)
 
-  insumo = area_insumos(area, quantidadeInsumo)
+  insumo = calcular_insumos(area, quantidadeInsumo)
   
   insumos.append(insumo)
   areas.append(area)
@@ -50,14 +50,39 @@ def calcular_area():
   print("------------------(Retornando ao menu...)------------------")
 
 def imprimir_dados():
+  print("------------------(Dados imprimidos)------------------")
   print(areas)
   print(insumos)
 
 def atualizar_dados():
-  print("atualizar")
+  index = int(input("Digite o indice que você quer atualizar: ")) - 1
+  if 0 <= index:
+    novoComprimento = float(input("Informe o novo valor do comprimento: "))
+    novaLargura = float(input("Informe o novo valor da largura: "))
+    novaQuantidadeInsumo = float(input("Digite a nova quantidade de insumo: "))
+
+    novoValorArea = area_retangulo(novaLargura, novoComprimento)
+    novoValorInsumo = calcular_insumos(novoValorArea, novaQuantidadeInsumo)
+
+    areas[index] = novoValorArea
+    insumos[index] = novoValorInsumo
+
+    print("Dados atualizados com sucesso!")
+    print(areas)
+    print(insumos)
+  else:
+    print("Erro!")
+ 
 
 def delecao_dados():
-  print("delecao")
+  index = int(input("Informe o index que você quer excluir: ")) - 1
+  if 0 <= index < len(areas):
+    areas.pop(index)
+    insumos.pop(index)
+      
+    print(areas)
+    print(insumos)
+    print("Dados excluídos.")
 
 # Loop
 while True:
@@ -67,30 +92,25 @@ while True:
   print("3. Atualizar dados;")
   print("4. Deleção de dados;")
   print("5. Sair do programa.")
+  
   opcaoEscolhida = int(input("\nEscolha uma opção: "))
 
   if opcaoEscolhida == 1:
     calcular_area()
     
-    # método de calculo
   elif opcaoEscolhida == 2:
     imprimir_dados()
     
-    # método de imprimir dados
   elif opcaoEscolhida == 3:
     atualizar_dados()
     
-    # método de atualizar dados
   elif opcaoEscolhida == 4:
     delecao_dados()
     
-    # método de deleção de dados
   elif opcaoEscolhida == 5:
     print("Saindo do programa...")
     print("Programa finalizado.")
     break
-    
 
-# culturaEscolhida = input(f"Informe o tipo de cultura: \n1.{tipoCultura[0]} \n2.{tipoCultura[1]}")
-
-# print(culturaEscolhida)
+  else:
+    print("Erro!")
