@@ -1,9 +1,10 @@
 import math
 
 # Dados em Vetores
-cultura = []
+culturas = []
 areas = []
 insumos = []
+tiposInsumos = []
 
 # Métodos para calcular as formas geométricas
 # ---POSSIVEL MELHORIA: colocar as informações da area diretamente no metodo das formas---
@@ -12,51 +13,51 @@ def area_circulo(raio, pi):
   return pi * raio ** 2
 
 def area_retangulo(base, altura):
-  return base * altura 
-
-def area_triangulo(base, altura):
-  return (base * altura) / 2
+  return base * altura
 
 def calcular_insumos(area, quantidade):
   return area * quantidade
 
 # Métodos para opções
 def calcular_area():
+  cultura = input("Informe a Cultura para o para o plantio:")
+  culturas.append(cultura)
+
   print("Informe o tipo de figura geométrica para o plantio:")
   print("1. Círculo;")
   print("2. Retângulo;")
-  print("3. Triângulo.")
   
   formaGeometrica = int(input("Escolha uma opção: "))
 
   comprimento = float(input("Informe o comprimento da área do plantio: "))
   largura = float(input("Agora informe a largura da área do plantio: "))
   quantidadeInsumo = float(input("Informe a quantidade de insumo: "))
+  tipodeInsumo = input("Informe a tipo de insumo: ")
 
   if formaGeometrica == 1:
     raio = float(input("Informe a área do raio: "))
     area = area_circulo(raio, math.pi)
   elif formaGeometrica == 2:
     area = area_retangulo(largura, comprimento)
-  elif formaGeometrica == 3:
-    area = area_triangulo(largura, comprimento)
 
   insumo = calcular_insumos(area, quantidadeInsumo)
   
   insumos.append(insumo)
   areas.append(area)
+  tiposInsumos.append(tipodeInsumo)
 
+  print(f"A cultura escolhida foi {cultura}.")
   print(f"A área do plantio é: {area:.2f} m².")
-  print(f"A quantidade de insumos necessário é de: {insumo:.2f} mL.")
-  print("------------------(Retornando ao menu...)------------------")
+  print(f"A quantidade de {tipodeInsumo} necessário é de: {insumo:.2f} mL.")
+  print("------------------(Retornando ao menu...)------------------\n")
 
 def imprimir_dados():
   print("------------------(Dados imprimidos)------------------")
-  print("Índice | Área  | Insumos")
+  print("Índice | Cultura | Área  | Insumos | Tipo Insumos")
   print("------------------")
   
-  for i, (area, insumo) in enumerate(zip(areas, insumos), start=1):
-    print(f"{i:6d} | {area:6.2f} | {insumo:7.2f}")
+  for i, (cultura, area, insumo, tipoInsumo) in enumerate(zip(culturas, areas, insumos, tiposInsumos), start=1):
+    print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo}")
 
 def atualizar_dados():
   index = int(input("Digite o índice que você quer atualizar: ")) - 1
@@ -82,6 +83,7 @@ def delecao_dados():
   if 0 <= index < len(areas):
     areas.pop(index)
     insumos.pop(index)
+    tiposInsumos.pop(index)
       
     print(areas)
     print(insumos)
