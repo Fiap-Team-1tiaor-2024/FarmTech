@@ -1,13 +1,20 @@
 import math
+import csv
 
 # Dados em Vetores
-culturas = []
+culturas = ['Café', 'Soja']
 areas = []
 insumos = []
+custoProducao = []
 tiposInsumos = []
 
+with open('./src/farm-tech/csv/teste.csv', 'w', newline='') as csvfile:
+  writer = csv.writer(csvfile, delimiter=',')
+  writer.writerow(culturas)
+  writer.writerow(areas)
+  writer.writerow(insumos)
+
 # Métodos para calcular as formas geométricas
-# ---POSSIVEL MELHORIA: colocar as informações da area diretamente no metodo das formas---
 def area_circulo(raio, pi):
   pi = math.pi
   return pi * raio ** 2
@@ -20,8 +27,16 @@ def calcular_insumos(area, quantidade):
 
 # Métodos para opções
 def calcular_area():
-  cultura = input("Informe a Cultura para o para o plantio:")
+  cultura = input("Informe a cultura para o para o plantio:")
   culturas.append(cultura)
+
+
+  # ----- VOLTAR A USAR ESSES DADOS FICTICIOS QUANDO ESTIVERMOS COM PY + R OK -----
+  # maoDeObra = float(input("Informe o valor/hora gasto: \n(Café - Hora R$30, Soja - Hora R$25): "))
+  # horasExecucao = int(input("Digite a quantidade de horas executadas por m²: \n(Café - Hora 1h30min 1Soja - Hora 1h): "))
+  
+  # totalProduzido = maoDeObra * horasExecucao
+  # custoProducao.append(totalProduzido)
 
   print("Informe o tipo de figura geométrica para o plantio:")
   print("1. Círculo;")
