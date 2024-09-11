@@ -1,31 +1,35 @@
+# Instalação de pacotes
 install.packages("tidyr")
 install.packages("dplyr")
 install.packages("gridExtra")
 
+# Importação de bibliotecas
 library(tidyr)
 library(dplyr)
 library(gridExtra)
 
-setwd("C:/Users/gsrxy/PycharmProjects/FarmTech/src/farm-tech/csv")
+# Adaptar de acordo com o caminho do arquivo do usuário
+setwd("C:/Dev/Projetos/FarmTech/src/farm-tech/csv")
 
-data <- read.csv("teste.csv", fileEncoding = "UTF-8", sep = ";", fill = TRUE)
+# Leitura do arquivo
+data <- read.csv("dados-planilha.csv", fileEncoding = "UTF-8", sep = ";", fill = TRUE)
 
+# Visualização dos dados e calculo da média
 media_area <- data %>%  group_by(Cultura) %>% summarize(MEDIA_AREA = mean(Area))
 media_producao <- data %>%  group_by(Cultura) %>% summarize(MEDIA_CUSTO = mean(Custo.de.producao))
 media_insumo <- data %>%  group_by(Tipo.de.insumo) %>% summarize(MEDIA_CUSTO = mean(Insumo))
 
+# Visualização dos dados na tabela
 grid.table(media_area)
 grid.table(media_producao)
 grid.table(media_insumo)
 
+# Visualização dos dados e calculo do desvio padrão
 desvio_area <- data %>%  group_by(Cultura) %>% summarize(DESVIO_AREA = sd(Area))
 desvio_producao <- data %>%  group_by(Cultura) %>% summarize(DESVIO_CUSTO = sd(Custo.de.producao))
 desvio_insumo <- data %>%  group_by(Tipo.de.insumo) %>% summarize(DESVIO_CUSTO = sd(Insumo))
 
+# Visualização dos dados na tabela
 grid.table(desvio_area)
 grid.table(desvio_producao)
 grid.table(desvio_insumo)
-      
-      
-      
-      
