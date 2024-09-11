@@ -4,20 +4,9 @@ import csv
 # Dados em Vetores
 culturas = ["Cafe", "Soja"]
 areas = [100, 200]
-quantidadesInsumos = ["20000", "30000"]
-custosProducao = ["300,00", "500,00"]
+quantidadesInsumos = [2000.0, 3000.0]
+custosProducao = [300.00, 500.00, 400.00]
 tiposInsumos = ["Fosfato", "Nitrogenio"]
-
-with open('./src/farm-tech/csv/teste.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile, delimiter=';')
-
-    print(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
-    writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
-
-    for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
-            zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
-        print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo}")
-        writer.writerow([cultura, f"{area:6.2f}", f"{insumo:7.2f}", tipoInsumo, f"{custoProducao:7.2f}"])
 
 # Métodos para calcular as formas geométricas
 def area_circulo(raio, pi):
@@ -78,6 +67,16 @@ def imprimir_dados():
     print("------------------(Dados imprimidos)------------------")
     print("Índice | Cultura | Área  | Insumos | Tipo Insumos")
     print("------------------")
+
+    with open('./src/farm-tech/csv/teste.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
+
+        for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
+                zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
+            print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo}")
+            writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
+
 
 def atualizar_dados():
     index = int(input("Digite o índice que você quer atualizar: ")) - 1
