@@ -1,34 +1,30 @@
 import math
 import csv
 
-# Dados em Vetores
+# Dados em Vetores - Dados por padrão para demonstração
 culturas = ["Cafe", "Soja"]
 areas = [100, 200]
 quantidadesInsumos = [2000.0, 3000.0]
 custosProducao = [300.00, 500.00]
 tiposInsumos = ["Fosfato", "Nitrogenio"]
 
-
 # Métodos para calcular as formas geométricas
 def area_circulo(raio, pi):
     pi = math.pi
     return pi * raio ** 2,
 
-
 def area_retangulo(base, altura):
     return base * altura
-
 
 def calcular_insumos(area, quantidade):
     return area * quantidade
 
-
 # Métodos para opções
 def calcular_area():
-    cultura = input("Informe a cultura para o para o plantio:")
+    cultura = input("Informe a cultura para o para o plantio: ")
     culturas.append(cultura)
 
-    print("Informe o tipo de figura geométrica para o plantio:")
+    print("Informe o tipo de figura geométrica para o plantio: ")
     print("1. Círculo;")
     print("2. Retângulo;")
 
@@ -63,22 +59,22 @@ def calcular_area():
     print(f"A quantidade de {tipodeInsumo} necessário é de: {insumo:.2f} mL.")
     print("------------------(Retornando ao menu...)------------------\n")
 
-
+# Método para imprimir os dados
 def imprimir_dados():
     print("------------------(Dados imprimidos)------------------")
-    print("Índice | Cultura | Área  | Insumos | Tipo Insumos")
+    print("Índice | Cultura | Área  | Insumos | Tipo Insumos | Custo de Produção")
     print("------------------")
 
-    with open('../src/farm-tech/teste.csv', 'w', newline='') as csvfile:
+    with open('./src/farm-tech/csv/dados-planilha.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile, delimiter=';')
         writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
 
         for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
                 zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
-            print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo} | {custoProducao}")
+            print(f"{i:6d} | {cultura}    | {area:6.2f} | {insumo:7.2f} | {tipoInsumo}  | R$ {custoProducao}")
             writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
 
-
+# Métodos para atualizar
 def atualizar_dados():
     index = int(input("Digite o índice que você quer atualizar: ")) - 1
     if 0 <= index < len(areas):
@@ -99,7 +95,7 @@ def atualizar_dados():
     else:
         print("Erro!")
 
-
+#Método para deletar dados
 def delecao_dados():
     index = int(input("Informe o index que você quer excluir: ")) - 1
     if 0 <= index < len(areas):
@@ -107,16 +103,14 @@ def delecao_dados():
         quantidadesInsumos.pop(index)
         tiposInsumos.pop(index)
 
-        print(areas)
-        print(quantidadesInsumos)
-        print("Dados excluídos.")
+        print("\nDados excluídos com sucesso! Imprima os dados para visualizar as alterações.")
 
 
-# Loop
+# Loop para o menu
 while True:
     print("------------------\nMENU\n------------------")
     print("1. Entrada de dados (cálculo);")
-    print("2. Saída de dados (imprimir);")
+    print("2. Saída de dados (imprimir dados e arquivo CSV);")
     print("3. Atualizar dados;")
     print("4. Deleção de dados;")
     print("5. Sair do programa.")
