@@ -2,17 +2,17 @@ import math
 import csv
 
 # Dados em Vetores
-culturas = ['Café', 'Soja']
-areas = []
-insumos = []
-custoProducao = []
-tiposInsumos = []
+culturas = ["Cafe", "Soja"]
+areas = [100, 200]
+insumos = ["Fosfato", "Nitrogenio"]
+custosProducao = ["300,00", "500,00"]
+tiposInsumos = ["Liquido", "Solido"]
 
 with open('./src/farm-tech/csv/teste.csv', 'w', newline='') as csvfile:
-  writer = csv.writer(csvfile, delimiter=',')
-  writer.writerow(culturas)
-  writer.writerow(areas)
-  writer.writerow(insumos)
+  writer = csv.writer(csvfile, delimiter=';')
+  writer.writerow(["CULTURA", "AREA", "INSUMO", "TIPO DE INSUMO", "CUSTO DE PRODUCAO"])
+  for(cultura, area, insumo, tipoInsumo, custoProducao) in zip(culturas, areas, insumos, tiposInsumos, custosProducao):
+    writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
 
 # Métodos para calcular as formas geométricas
 def area_circulo(raio, pi):
