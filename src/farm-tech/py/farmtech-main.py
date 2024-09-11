@@ -58,7 +58,6 @@ def calcular_area():
     total_produzido: float = mao_de_obra * horas_execucao
     custosProducao.append(total_produzido)
 
-
     print(f"A cultura escolhida foi {cultura}.")
     print(f"A área do plantio é: {area:.2f} m².")
     print(f"A quantidade de {tipodeInsumo} necessário é de: {insumo:.2f} mL.")
@@ -70,14 +69,14 @@ def imprimir_dados():
     print("Índice | Cultura | Área  | Insumos | Tipo Insumos")
     print("------------------")
 
-    #with open('../src/farm-tech/teste.csv', 'w', newline='') as csvfile:
-        #writer = csv.writer(csvfile, delimiter=';')
-        #writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
+    with open('../src/farm-tech/teste.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, delimiter=';')
+        writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
 
-    for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
-            zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
-        print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo} | {custoProducao}")
-            #writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
+        for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
+                zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
+            print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo} | {custoProducao}")
+            writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
 
 
 def atualizar_dados():
@@ -111,6 +110,7 @@ def delecao_dados():
         print(areas)
         print(quantidadesInsumos)
         print("Dados excluídos.")
+
 
 # Loop
 while True:
