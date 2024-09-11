@@ -5,8 +5,9 @@ import csv
 culturas = ["Cafe", "Soja"]
 areas = [100, 200]
 quantidadesInsumos = [2000.0, 3000.0]
-custosProducao = [300.00, 500.00, 400.00]
+custosProducao = [300.00, 500.00]
 tiposInsumos = ["Fosfato", "Nitrogenio"]
+
 
 # Métodos para calcular as formas geométricas
 def area_circulo(raio, pi):
@@ -26,13 +27,6 @@ def calcular_insumos(area, quantidade):
 def calcular_area():
     cultura = input("Informe a cultura para o para o plantio:")
     culturas.append(cultura)
-
-    # ----- VOLTAR A USAR ESSES DADOS FICTICIOS QUANDO ESTIVERMOS COM PY + R OK -----
-    # maoDeObra = float(input("Informe o valor/hora gasto: \n(Café - Hora R$30, Soja - Hora R$25): "))
-    # horasExecucao = int(input("Digite a quantidade de horas executadas por m²: \n(Café - Hora 1h30min 1Soja - Hora 1h): "))
-
-    # totalProduzido = maoDeObra * horasExecucao
-    # custoProducao.append(totalProduzido)
 
     print("Informe o tipo de figura geométrica para o plantio:")
     print("1. Círculo;")
@@ -57,6 +51,14 @@ def calcular_area():
     areas.append(area)
     tiposInsumos.append(tipodeInsumo)
 
+    mao_de_obra = float(input("Informe o valor/hora gasto: \n(Café - Hora R$30, Soja - Hora R$25): "))
+    horas_execucao = int(
+        input("Digite a quantidade de horas executadas por m²: \n(Café - Hora 1h30min 1 - Soja - Hora 1h): "))
+
+    total_produzido: float = mao_de_obra * horas_execucao
+    custosProducao.append(total_produzido)
+
+
     print(f"A cultura escolhida foi {cultura}.")
     print(f"A área do plantio é: {area:.2f} m².")
     print(f"A quantidade de {tipodeInsumo} necessário é de: {insumo:.2f} mL.")
@@ -68,14 +70,14 @@ def imprimir_dados():
     print("Índice | Cultura | Área  | Insumos | Tipo Insumos")
     print("------------------")
 
-    with open('./src/farm-tech/csv/teste.csv', 'w', newline='') as csvfile:
-        writer = csv.writer(csvfile, delimiter=';')
-        writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
+    #with open('../src/farm-tech/teste.csv', 'w', newline='') as csvfile:
+        #writer = csv.writer(csvfile, delimiter=';')
+        #writer.writerow(["Cultura", "Area", "Insumo", "Tipo de insumo", "Custo de producao"])
 
-        for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
-                zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
-            print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo}")
-            writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
+    for i, (cultura, area, insumo, tipoInsumo, custoProducao) in enumerate(
+            zip(culturas, areas, quantidadesInsumos, tiposInsumos, custosProducao), start=1):
+        print(f"{i:6d} | {cultura} | {area:6.2f} | {insumo:7.2f} | {tipoInsumo} | {custoProducao}")
+            #writer.writerow([cultura, area, insumo, tipoInsumo, custoProducao])
 
 
 def atualizar_dados():
@@ -93,7 +95,8 @@ def atualizar_dados():
 
         print("Dados atualizados com sucesso!")
         print(f"A nova área é de: {areas[index]:.2f} m².")  # Acessa o valor específico da lista
-        print(f"A nova quantidade de insumo é de: {quantidadesInsumos[index]:.2f} mL.")  # Acessa o valor específico da lista
+        print(
+            f"A nova quantidade de insumo é de: {quantidadesInsumos[index]:.2f} mL.")  # Acessa o valor específico da lista
     else:
         print("Erro!")
 
@@ -108,7 +111,6 @@ def delecao_dados():
         print(areas)
         print(quantidadesInsumos)
         print("Dados excluídos.")
-
 
 # Loop
 while True:
