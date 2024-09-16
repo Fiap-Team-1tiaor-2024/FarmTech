@@ -19,11 +19,15 @@ Para o projeto funcionar da maneira que esperamos, recomendamos seguir os seguin
    
 ![image](https://github.com/user-attachments/assets/c84dfd7a-04c3-4b99-8e0c-d2e716b35f5a)
 
-5. Após isso, vá para o arquivo **estatisticas.R** para poder calcular a media e desvio.
+4. Após isso, vá para o arquivo **estatisticas.R** para poder calcular a media e desvio.
    
-6. Defina o caminho de arquivo de acordo com que está na sua máquina para o programa ler os dados CSV e calcular a média e desvio.
+5. Defina o caminho de arquivo de acordo com que está na sua máquina para o programa ler os dados CSV e calcular a média e desvio.
    
 ![image](https://github.com/user-attachments/assets/47076878-38f1-4037-ae3b-378dbb48d7b4)
- 
+
+**Extra:** Se caso não ouver o Excel na sua máquina e você quiser visualizar o CSV no próprio VS Code, recomendamos instalar o **Rainbow CSV** para a melhor visualização dos dados gerados.
+
+![image](https://github.com/user-attachments/assets/a8062d0c-8e70-4feb-8c21-178bcfb11510)
+
 
 O projeto foi desenvolvido utilizando GitHub para versionamento, promovendo um ambiente colaborativo de desenvolvimento entre os colaboradores do projeto.
