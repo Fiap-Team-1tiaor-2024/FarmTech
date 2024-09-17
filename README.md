@@ -25,6 +25,10 @@ Para o projeto funcionar da maneira que esperamos, recomendamos seguir os seguin
    
 ![image](https://github.com/user-attachments/assets/47076878-38f1-4037-ae3b-378dbb48d7b4)
 
+6. Por padrão deixamos **vários dados** no arquivo CSV para poder calcular o desvio, pois com poucos dados não é possível calcular o desvio no R.
+
+7. Quando realizado o cálculo no programa do Python, **para exibir e atualizar** a planilha basta escolhar a opção para imprimir os dados.
+
 **Extra:** Se caso não ouver o Excel na sua máquina e você quiser visualizar o CSV no próprio VS Code, recomendamos instalar o **Rainbow CSV** para a melhor visualização dos dados gerados.
 
 ![image](https://github.com/user-attachments/assets/a8062d0c-8e70-4feb-8c21-178bcfb11510)
