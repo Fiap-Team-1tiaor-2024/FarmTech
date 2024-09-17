@@ -43,4 +43,3 @@ print(desvio_producao)
 
 grid.table(desvio_insumo)
 print(desvio_insumo)
-
