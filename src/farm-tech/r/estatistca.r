@@ -21,8 +21,13 @@ media_insumo <- data %>%  group_by(Tipo.de.insumo) %>% summarize(MEDIA_CUSTO = m
 
 # Visualização dos dados na tabela
 grid.table(media_area)
+print(media_area)
+
 grid.table(media_producao)
+print(media_producao)
+
 grid.table(media_insumo)
+print(media_insumo)
 
 # Visualização dos dados e calculo do desvio padrão
 desvio_area <- data %>%  group_by(Cultura) %>% summarize(DESVIO_AREA = sd(Area))
@@ -31,5 +36,11 @@ desvio_insumo <- data %>%  group_by(Tipo.de.insumo) %>% summarize(DESVIO_CUSTO =
 
 # Visualização dos dados na tabela
 grid.table(desvio_area)
+print(desvio_area)
+
 grid.table(desvio_producao)
+print(desvio_producao)
+
 grid.table(desvio_insumo)
+print(desvio_insumo)
+
