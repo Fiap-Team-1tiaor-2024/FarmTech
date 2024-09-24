@@ -2,7 +2,7 @@ import math
 import csv
 
 # Lista de culturas disponíveis
-culturas_disponiveis = ["Cafe", "Soja"]
+culturasDisponiveis = ["Cafe", "Soja"]
 
 # Dados em Vetores - Dados por padrão para demonstração
 culturas = ["Cafe", "Soja"]
@@ -12,23 +12,23 @@ custosProducao = [300.00, 500.00]
 tiposInsumos = ["Fosfato", "Nitrogenio"]
 
 # Métodos para calcular as formas geométricas
-def area_circulo(raio):
+def areaCirculo(raio):
     return math.pi * raio ** 2  # Removido a vírgula para retornar um float
 
-def area_retangulo(base, altura):
+def areaRetangulo(base, altura):
     return base * altura
 
-def calcular_insumos(area, quantidade):
+def calcularInsumos(area, quantidade):
     return area * quantidade
 
 # Métodos para opções
-def calcular_area():
+def calcularArea():
     print("\nSelecione a cultura para o plantio:")
-    for idx, cultura in enumerate(culturas_disponiveis, 1):
+    for idx, cultura in enumerate(culturasDisponiveis, 1):
         print(f"{idx}. {cultura}")
-    opcao_cultura = int(input("Escolha uma opção: "))
-    if 1 <= opcao_cultura <= len(culturas_disponiveis):
-        cultura = culturas_disponiveis[opcao_cultura - 1]
+    opcaoCultura = int(input("Escolha uma opção: "))
+    if 1 <= opcaoCultura <= len(culturasDisponiveis):
+        cultura = culturasDisponiveis[opcaoCultura - 1]
     else:
         print("Opção inválida.")
         return
@@ -45,26 +45,26 @@ def calcular_area():
 
     if formaGeometrica == 1:
         raio = float(input("Informe o valor do raio em metros: "))
-        area = area_circulo(raio)
+        area = areaCirculo(raio)
     elif formaGeometrica == 2:
         comprimento = float(input("Informe o comprimento da área do plantio em metros: "))
         largura = float(input("Agora informe a largura da área do plantio em metros: "))
-        area = area_retangulo(largura, comprimento)
+        area = areaRetangulo(largura, comprimento)
     else:
         print("Opção inválida.")
         return
 
-    insumo = calcular_insumos(area, quantidadeInsumo)
+    insumo = calcularInsumos(area, quantidadeInsumo)
 
     quantidadesInsumos.append(insumo)
     areas.append(area)
     tiposInsumos.append(tipodeInsumo)
 
-    mao_de_obra = float(input("Informe o valor/hora gasto em R$: "))
-    horas_execucao = float(input("Digite a quantidade de horas executadas por m²: "))
+    maoDeObra = float(input("Informe o valor/hora gasto em R$: "))
+    horasExecucao = float(input("Digite a quantidade de horas executadas por m²: "))
 
-    total_produzido = mao_de_obra * horas_execucao
-    custosProducao.append(total_produzido)
+    totalProduzido = maoDeObra * horasExecucao
+    custosProducao.append(totalProduzido)
 
     print(f"\nA cultura escolhida foi: {cultura}")
     print(f"A área do plantio é: {area:.2f} m²")
@@ -72,7 +72,7 @@ def calcular_area():
     print("------------------(Retornando ao menu...)------------------\n")
 
 # Método para imprimir os dados
-def imprimir_dados():
+def imprimirDados():
     print("\n------------------(Dados imprimidos)------------------")
     print("Índice | Cultura |   Área   |  Insumos  | Tipo Insumos | Custo de Produção")
     print("-------------------------------------------------------------------------")
@@ -89,7 +89,7 @@ def imprimir_dados():
     print("\nDados exportados para 'dados-planilha.csv'.\n")
 
 # Método para atualizar dados
-def atualizar_dados():
+def atualizarDados():
     index = int(input("Digite o índice que você quer atualizar: ")) - 1
     if 0 <= index < len(areas):
         print("\nAtualizando dados para a cultura:", culturas[index])
@@ -97,8 +97,8 @@ def atualizar_dados():
         novaLargura = float(input("Informe o novo valor da largura em metros: "))
         novaQuantidadeInsumo = float(input("Digite a nova quantidade de insumo por m²: "))
 
-        novoValorArea = area_retangulo(novaLargura, novoComprimento)
-        novoValorInsumo = calcular_insumos(novoValorArea, novaQuantidadeInsumo)
+        novoValorArea = areaRetangulo(novaLargura, novoComprimento)
+        novoValorInsumo = calcularInsumos(novoValorArea, novaQuantidadeInsumo)
 
         areas[index] = novoValorArea
         quantidadesInsumos[index] = novoValorInsumo
@@ -110,7 +110,7 @@ def atualizar_dados():
         print("Erro: Índice inválido!\n")
 
 # Método para deletar dados
-def delecao_dados():
+def delecaoDados():
     index = int(input("Informe o índice que você quer excluir: ")) - 1
     if 0 <= index < len(areas):
         print(f"\nExcluindo dados da cultura: {culturas[index]}")
@@ -136,13 +136,13 @@ while True:
     opcaoEscolhida = int(input("\nEscolha uma opção: "))
 
     if opcaoEscolhida == 1:
-        calcular_area()
+        calcularArea()
     elif opcaoEscolhida == 2:
-        imprimir_dados()
+        imprimirDados()
     elif opcaoEscolhida == 3:
-        atualizar_dados()
+        atualizarDados()
     elif opcaoEscolhida == 4:
-        delecao_dados()
+        delecaoDados()
     elif opcaoEscolhida == 5:
         print("\nSaindo do programa...")
         print("Programa finalizado.")
