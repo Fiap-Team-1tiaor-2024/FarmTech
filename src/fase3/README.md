@@ -35,6 +35,9 @@ O sistema é capaz de realizar operações de CRUD (Criar, Ler, Atualizar e Dele
 
 O código está estruturado em uma única classe Python chamada `IrrigacaoAutomatizadaDB`, que contém métodos para realizar as operações no banco de dados. Cada operação é realizada através de uma consulta SQL, que é executada no banco e, em seguida, o commit é feito para garantir que as mudanças sejam persistidas.
 
+### Estrutura Wokwi 
+![image](https://github.com/user-attachments/assets/1a4be5c2-4cdd-4bad-bc97-28a7a527fcbc)
+
 ### Métodos Principais
 
 - `criar_fazenda(id_fazenda, nome_fazenda, estado_fazenda, cidade_fazenda)`: Insere uma nova fazenda na tabela `Fazenda`.
