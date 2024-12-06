@@ -35,7 +35,7 @@ Este projeto integra um sistema de monitoramento de sensores para agricultura de
 2. Execute o servidor:
   ```bash
   uvicorn main:app --
-  
+  ```
 3. Acesse a interface interativa:
   Gráficos: http://localhost:8000
   Previsões: http://localhost:8000/predict
