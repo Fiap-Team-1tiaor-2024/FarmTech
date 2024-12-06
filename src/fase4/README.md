@@ -1,6 +1,6 @@
 # Projeto FarmTech - Sistema de Monitoramento e Modelagem Preditiva
 
-Este projeto integra um sistema de monitoramento de sensores para agricultura de precisão utilizando ESP32 e um sistema de modelagem preditiva com Python, Scikit-learn, e Plotly. 
+Este projeto integra um sistema de monitoramento de sensores para agricultura de precisão utilizando ESP32 e um sistema de modelagem preditiva com Python, Scikit-learn, e Plotly. Foi utilizado o FastAPI para exibir os gráficos da lib Plotly.
 
 ## Funcionalidades
 1. **Monitoramento em Tempo Real com ESP32**:
